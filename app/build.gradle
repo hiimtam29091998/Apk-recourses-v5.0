@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    namespace 'com.khoangthach.mobile'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.khoangthach.mobile'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '5.0.0-mobile-beta'
+        ndk { abiFilters 'arm64-v8a' }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildTypes {
+        release { minifyEnabled false }
+        debug { minifyEnabled false }
+    }
+}
+
+chaquopy {
+    defaultConfig {
+        version = '3.11'
+        pip {
+            // These binaries are packaged in the APK by Chaquopy.
+            install 'numpy'
+            install 'scipy'
+            install 'xlsxwriter'
+        }
+    }
+}
